@@ -1,4 +1,4 @@
-## TP 6- PROGRAMACION ORIENTADA A OBJETOS
+## TP 7 - PROGRAMACION ORIENTADA A OBJETOS
 
 Integrante - Nombre en github
 - Cansino Lujan, lujancansino
