@@ -21,30 +21,28 @@ public class CollectionTarjetaCredito {
 
 	
 	public static void agregarTarjetaCredito(TarjetaCredito tarjeta) {
-		
 		try {
 			tarjetas.add(tarjeta);
 		} catch (Exception e) {
 			System.out.println("\nNO SE PUEDE GUARDAR LA TARJETA DE CREDITO");
 		}
-		
 	}
 
 	public static TarjetaCredito buscarTarjetaCredito(long numero) {
 		TarjetaCredito tarjetaEncontrada = null;
-		
 		try {
 			if (tarjetas != null) {
 				for (TarjetaCredito tarjeta : tarjetas) {
 					if (tarjeta.getNumero() == numero) {
 						tarjetaEncontrada = tarjeta;
+						break;
 					}
 				}
 			}
 		} catch (Exception e) {
 			return null;
 		}
-		
 		return tarjetaEncontrada;
 	}
+
 }

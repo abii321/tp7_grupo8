@@ -1,15 +1,19 @@
 package ar.edu.unju.escmi.tp7.main;
 
 import java.util.Scanner;
+import java.util.List;
 
-import ar.edu.unju.escmi.tp7.collections.CollectionCliente;
-import ar.edu.unju.escmi.tp7.collections.CollectionProducto;
-import ar.edu.unju.escmi.tp7.collections.CollectionStock;
-import ar.edu.unju.escmi.tp7.collections.CollectionTarjetaCredito;
+//import javax.swing.text.Utilities;
+//import org.jcp.xml.dsig.internal.dom.Utils;
+
+import ar.edu.unju.escmi.tp7.collections.*;
+import ar.edu.unju.escmi.tp7.dominio.*;
+import ar.edu.unju.escmi.tp7.utils.InputUtil;
+import ar.edu.unju.escmi.tp7.exceptions.*;
+
 
 public class Main {
-	
-	static Scanner scanner = new Scanner(System.in);
+	static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
 		
@@ -26,13 +30,27 @@ public class Main {
             System.out.println("4- Consultar stock");
             System.out.println("5- Revisar creditos de un cliente (debe ingresar el DNI del cliente)");
             System.out.println("6- Salir");
+            opcion = InputUtil.inputInt("Ingrese su opcion: ");
 
-            System.out.println("Ingrese su opcion: ");
-            opcion = scanner.nextInt();
+            switch (opcion) {
+                case 2: {
+                    long dni = InputUtil.inputLong("Ingrese el dni del cliente: ");
+                    try{
+                        Cliente cliente = CollectionCliente.buscarCliente(dni);
+                        if( cliente == null ) throw new UsuarioNoRegistradoException("El usuario no existe.");
+                        List<Factura> compras = cliente.consultarCompras();
+                        for(Factura f : compras) System.out.println(f);
+                    } catch (UsuarioNoRegistradoException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    break;
+                }
+                case 6: System.out.println("Saliendo del programa..."); break;    
+                default: System.out.println("La opcion seleccionada no existe");break;
+            }
 
         }while(opcion != 6);
-        scanner.close();
 
+        sc.close();
 	}
-
 }

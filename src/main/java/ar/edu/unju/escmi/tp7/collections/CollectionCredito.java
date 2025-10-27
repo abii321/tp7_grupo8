@@ -7,15 +7,13 @@ import ar.edu.unju.escmi.tp7.dominio.Credito;
 
 public class CollectionCredito {
 
-	 public static List<Credito> creditos = new ArrayList<Credito>();
+	public static List<Credito> creditos = new ArrayList<Credito>();
 
-	 public static void agregarCredito(Credito credito) {
-	        
-	    	try {
-	    		creditos.add(credito);
-			} catch (Exception e) {
-				System.out.println("\nNO SE PUEDE GUARDAR EL CREDITO");
-			}
-	    	
-	    }
+	public static void agregarCredito(Credito credito) {    
+	    try {
+	    	creditos.add(credito);
+		} catch (Exception e) {
+			System.out.println("\nNO SE PUEDE GUARDAR EL CREDITO");
+		}	
+	}
 }
