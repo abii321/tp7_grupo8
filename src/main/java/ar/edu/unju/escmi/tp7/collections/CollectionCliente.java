@@ -18,24 +18,21 @@ public class CollectionCliente {
         }
     }
 
-
     public static void agregarCliente(Cliente cliente) {
     	try {
     		clientes.add(cliente);
 		} catch (Exception e) {
 			System.out.println("\nNO SE PUEDE GUARDAR EL CLIENTE");
 		}
-        
     }
 
     public static Cliente buscarCliente(long dni) {
         Cliente clienteEncontrado = null;
-
         try {
         	for (Cliente cli : clientes) {
-                if (cli.getDni() == dni) {
+                if (cli.getDni() == dni) 
                     clienteEncontrado = cli;
-                }
+                    break;
             }
 		} catch (Exception e) {
 			return null;
