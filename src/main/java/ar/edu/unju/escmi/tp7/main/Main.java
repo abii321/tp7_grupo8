@@ -2,6 +2,8 @@ package ar.edu.unju.escmi.tp7.main;
 
 import java.util.Scanner;
 import java.util.List;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 //import javax.swing.text.Utilities;
 //import org.jcp.xml.dsig.internal.dom.Utils;
