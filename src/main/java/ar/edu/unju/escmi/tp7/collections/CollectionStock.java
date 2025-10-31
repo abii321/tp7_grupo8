@@ -10,6 +10,7 @@ public class CollectionStock {
 
 	public static List<Stock> stocks = new ArrayList<Stock>();
 
+
 	public static void precargarStocks() {
 		if (stocks.isEmpty()) {
 			stocks = new ArrayList<Stock>();
@@ -94,4 +95,21 @@ public class CollectionStock {
 		
 		return stockTotal;
 	}
+
+	public static void mostrarProductosDisponibles() {
+    System.out.println("\n--- Productos Disponibles ---");
+    boolean hayStock = false;
+    for (Stock s : stocks) {
+        if (s.getCantidad() > 0) {
+            System.out.println("Código: " + s.getProducto().getCodigo() +
+                               ", Nombre: " + s.getProducto().getNombre() +
+                               ", Precio: " + s.getProducto().getPrecio() +
+                               ", Stock: " + s.getCantidad());
+            hayStock = true;
+        }
+    }
+    if (!hayStock) {
+        throw new IllegalStateException("No hay productos disponibles en stock.");
+    }
+}
 }

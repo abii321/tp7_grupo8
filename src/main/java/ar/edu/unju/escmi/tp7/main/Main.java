@@ -45,6 +45,16 @@ public class Main {
                     }
                     break;
                 }
+
+            case 3:
+            try {
+                CollectionStock.mostrarProductosDisponibles();
+                } catch (IllegalStateException e) {
+                    System.out.println("Error: " + e.getMessage());
+                }
+                break;
+
+
                 case 6: System.out.println("Saliendo del programa..."); break;    
                 default: System.out.println("La opcion seleccionada no existe");break;
             }
