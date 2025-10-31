@@ -18,6 +18,15 @@ public class Producto {
         this.origenFabricacion = origenFabricacion;
     }
 
+  public String getNombre() {
+    return descripcion;
+}
+
+public double getPrecio() {
+    return precioUnitario;
+}
+
+
     public long getCodigo() {
         return codigo;
     }
