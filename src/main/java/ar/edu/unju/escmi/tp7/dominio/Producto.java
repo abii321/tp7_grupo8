@@ -59,6 +59,24 @@ public double getPrecio() {
         this.origenFabricacion = origenFabricacion;
     }
 
+    private int stock;
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    // Método para reducir el stock al vender cierta cantidad
+    public void reducirStock(int cantidad) {
+        if (cantidad > 0 && cantidad <= stock) {
+            stock -= cantidad;
+        } else {
+            System.out.println("⚠️ Cantidad inválida para reducir el stock");
+        }
+    }
     @Override
     public String toString() {
         return "Codigo: " + codigo + " Descripcion: " + descripcion + " Precio Unitario: " + precioUnitario
