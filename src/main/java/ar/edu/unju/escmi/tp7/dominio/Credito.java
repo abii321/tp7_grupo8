@@ -31,20 +31,8 @@ public class Credito {
 	public TarjetaCredito getTarjetaCredito() {
 		return tarjetaCredito;
 	}
-	public void setTarjetaCredito(TarjetaCredito tarjetaCredito) {
-		this.tarjetaCredito = tarjetaCredito;
-	}
-	public Factura getFactura() {
-		return factura;
-	}
-	public void setFactura(Factura factura) {
-		this.factura = factura;
-	}
 	public List<Cuota> getCuotas() {
 		return cuotas;
-	}
-	public void setCuotas(List<Cuota> cuotas) {
-		this.cuotas = cuotas;
 	}
 	
 	public void generarCuotas() {

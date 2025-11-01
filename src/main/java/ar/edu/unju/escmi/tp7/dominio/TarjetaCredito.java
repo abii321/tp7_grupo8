@@ -1,10 +1,6 @@
 package ar.edu.unju.escmi.tp7.dominio;
 
 import java.time.LocalDate;
-import java.util.Collection;
-
-import ar.edu.unju.escmi.tp7.collections.CollectionFactura;
-import ar.edu.unju.escmi.tp7.collections.CollectionTarjetaCredito;
 
 public class TarjetaCredito {
 	private long numero;
@@ -23,30 +19,14 @@ public class TarjetaCredito {
 	}
 
 	public long getNumero() {
-        return numero;
-    }
-    public void setNumero(long numero) {
-        this.numero = numero;
-    }
-    public LocalDate getFechaCaducacion() {
-        return fechaCaducacion;
-    }
-    public void setFechaCaducacion(LocalDate fechaCaducacion) {
-	       this.fechaCaducacion = fechaCaducacion;
+		return numero;
 	}
 	public Cliente getCliente() {
 		return cliente;
 	}
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-	public void setLimiteCompra(double limiteCompra) {
-		this.limiteCompra = limiteCompra;
-	}
 	public double getLimiteCompra() {
-    return limiteCompra;
-	}	
-
+		return limiteCompra;
+	}
 	@Override
 	public String toString() {
 		return "\nNumero: " + numero + " Fecha De Caducacion: " + fechaCaducacion + "\nNombre Titular: "
