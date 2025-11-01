@@ -3,7 +3,7 @@ package ar.edu.unju.escmi.tp7.utils;
 import java.util.Scanner;
 
 public class InputUtil {
-    static Scanner sc = new Scanner(System.in);
+    public static Scanner sc = new Scanner(System.in);
 
     public static int inputInt( String msg){
         int aux =0; boolean valido = false;

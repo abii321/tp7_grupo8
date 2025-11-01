@@ -2,8 +2,8 @@ package ar.edu.unju.escmi.tp7.main;
 
 import java.util.Scanner;
 import java.util.List;
-import java.util.ArrayList;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 //import javax.swing.text.Utilities;
 //import org.jcp.xml.dsig.internal.dom.Utils;
@@ -15,7 +15,7 @@ import ar.edu.unju.escmi.tp7.exceptions.*;
 
 
 public class Main {
-	static Scanner sc = new Scanner(System.in);
+	public static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
 		
@@ -121,35 +121,48 @@ public class Main {
                     break;
                 }
 
-            case 3:
-            try {
-                CollectionStock.mostrarProductosDisponibles();
-                } catch (IllegalStateException e) {
-                    System.out.println("Error: " + e.getMessage());
+                case 3: {
+                    try {
+                        CollectionStock.mostrarProductosDisponibles();
+                    } catch (IllegalStateException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
+                    break;
                 }
-                break;
-					 case 4:
-                try {
-                long codigo = InputUtil.inputLong("Ingrese el código del producto a consultar: ");
-                Producto producto = CollectionProducto.buscarProducto(codigo);
-               if (producto == null)
-                throw new ProductoNoEncontradoException("No se encontró un producto con ese código.");
+			    
+                case 4: {
+                    try {
+                        long codigo = InputUtil.inputLong("Ingrese el código del producto a consultar: ");
+                        Producto producto = CollectionProducto.buscarProducto(codigo);
 
-               Stock stock = CollectionStock.buscarStock(producto);
-               if (stock == null)
-               throw new StockInsuficienteException("No hay registro de stock para este producto.");
+                        if (producto == null) throw new ProductoNoEncontradoException("No se encontró un producto con ese código.");
 
-                System.out.println("\n El producto '" + producto.getDescripcion() +
-                "' tiene un stock de " + stock.getCantidad() + " unidades.");
+                        Stock stock = CollectionStock.buscarStock(producto);
+                        if (stock == null) throw new StockInsuficienteException("No hay registro de stock para este producto.");
 
-              } catch (ProductoNoEncontradoException | StockInsuficienteException e) {
-                System.out.println("Error " + e.getMessage());
-              } catch (Exception e) {
-              System.out.println("Error inesperado: " + e.getMessage());
-               }
-               break;
+                        System.out.println("\n El producto '" + producto.getDescripcion() +
+                        "' tiene un stock de " + stock.getCantidad() + " unidades.");
 
+                    } catch (ProductoNoEncontradoException | StockInsuficienteException e) {
+                        System.out.println("Error " + e.getMessage());
+                    } catch (Exception e) {
+                        System.out.println("Error inesperado: " + e.getMessage());
+                    }
+                    break;
+                }
 
+                case 5 : {
+                    long dni = InputUtil.inputLong("Ingrese el dni del cliente: ");
+                    try{
+                        Cliente cliente = CollectionCliente.buscarCliente(dni);
+                        if( cliente == null ) throw new UsuarioNoRegistradoException("El usuario no existe.");
+                        
+                    } catch (UsuarioNoRegistradoException e ) {
+                        System.out.println(e.getMessage());
+                    }
+                    break;
+                }
+                
                 case 6: System.out.println("Saliendo del programa..."); break;    
                 default: System.out.println("La opcion seleccionada no existe");break;
             }
