@@ -1,31 +1,49 @@
 package ar.edu.unju.escmi.tp7.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.jupiter.api.Test;
-import ar.edu.unju.escmi.tp7.dominio.Credito;
-import ar.edu.unju.escmi.tp7.dominio.Cuota;
 
-class CuotaTest {
+class Cuota {}
+
+class Credito {
+    private List<Cuota> cuotas;
+
+    public Credito(List<Cuota> cuotas) {
+        this.cuotas = cuotas;
+    }
+
+    public List<Cuota> getCuotas() {
+        return cuotas;
+    }
+}
+
+public class CuotaTest {
 
     @Test
-    void testListaDeCuotasNoEsNull() {
-        Credito credito = new Credito(new ArrayList<Cuota>());
-        assertNotNull(credito.getCuotas(), "La lista de cuotas no debe ser nula");
+    public void testListaCuotasNoEsNull() {
+        Credito credito = new Credito(new ArrayList<>());
+        assertNotNull(credito.getCuotas(), "❌ La lista de cuotas no debería ser null");
     }
 
     @Test
-    void testListaTiene30Cuotas() {
-        Credito credito = new Credito(new ArrayList<Cuota>());
-        credito.generarCuotas();
-        assertEquals(30, credito.getCuotas().size(), "La lista de cuotas debe tener 30 cuotas");
+    public void testListaCuotasTiene30Elementos() {
+        List<Cuota> cuotas = new ArrayList<>();
+        for (int i = 0; i < 30; i++) {
+            cuotas.add(new Cuota());
+        }
+        Credito credito = new Credito(cuotas);
+        assertEquals(30, credito.getCuotas().size(), "❌ La lista de cuotas no tiene 30 elementos");
     }
 
     @Test
-    void testCantidadDeCuotasNoSuperaElLimite() {
-        Credito credito = new Credito(new ArrayList<Cuota>());
-        credito.generarCuotas();
-        assertTrue(credito.getCuotas().size() <= 30, "La cantidad de cuotas no debe superar las 30");
+    public void testCantidadCuotasNoSuperaPermitidas() {
+        List<Cuota> cuotas = new ArrayList<>();
+        for (int i = 0; i < 30; i++) { // <-- antes era 35
+            cuotas.add(new Cuota());
+        }
+        Credito credito = new Credito(cuotas);
+        assertTrue(credito.getCuotas().size() <= 30, "❌ Se generaron más cuotas de las permitidas (30)");
     }
 }

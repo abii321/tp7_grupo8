@@ -41,7 +41,7 @@ public class TarjetaCredito {
 	}
 	public double getLimiteCompra() {
     return limiteCompra;
-}
+}	
 	
 	@Override
 	public String toString() {

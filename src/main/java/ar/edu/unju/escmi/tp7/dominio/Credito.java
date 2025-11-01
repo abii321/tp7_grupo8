@@ -48,23 +48,40 @@ public class Credito {
 	}
 	
 	public void generarCuotas() {
-		double montoCuota = this.factura.calcularTotal() / 30;
-		int nroCuota = 0;
-		LocalDate currentDate = LocalDate.now();
-		LocalDate auxDate = LocalDate.now();
+    cuotas.clear(); // limpia antes de generar
+    double totalFactura = this.factura.calcularTotal();
+	double limiteDisponible = this.tarjetaCredito.getLimiteCompra();
 
-		for (int i = 0; i < 30; i++) {
-			nroCuota++;
-			Cuota cuota = new Cuota();
-			cuota.setMonto(montoCuota);
-			cuota.setNroCuota(nroCuota);
-			cuota.setFechaGeneracion(currentDate); 
-			auxDate = auxDate.plusMonths(1);
-			cuota.setFechaVencimiento(auxDate);
-			cuotas.add(cuota);
-		}
+    if (totalFactura > limiteDisponible) {
+        System.out.println("⚠️ El monto total supera el límite disponible de la tarjeta.");
+        return;
+    }
 
-	}
+    int cantidadCuotas = 30; // Valor máximo permitido
+    if (cuotas.size() > 30) {
+        cantidadCuotas = 30; // limitar si venían más
+    } else if (cuotas.isEmpty()) {
+        cantidadCuotas = 30; // default
+    } else {
+        cantidadCuotas = cuotas.size(); // usa las que ya tenga si están bien
+    }
+
+    double montoCuota = totalFactura / cantidadCuotas;
+    int nroCuota = 0;
+    LocalDate currentDate = LocalDate.now();
+    LocalDate auxDate = LocalDate.now();
+
+    for (int i = 0; i < cantidadCuotas; i++) {
+        nroCuota++;
+        Cuota cuota = new Cuota();
+        cuota.setMonto(montoCuota);
+        cuota.setNroCuota(nroCuota);
+        cuota.setFechaGeneracion(currentDate);
+        auxDate = auxDate.plusMonths(1);
+        cuota.setFechaVencimiento(auxDate);
+        cuotas.add(cuota);
+    }
+}
 
 	public void mostarCredito() {
 		System.out.println("Tarjeta De Credito: " + tarjetaCredito + "\n" + factura + "\nCant. Cuotas:\n");

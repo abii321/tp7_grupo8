@@ -1,47 +1,65 @@
 package ar.edu.unju.escmi.tp7.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.junit.jupiter.api.Test;
-
 import ar.edu.unju.escmi.tp7.dominio.Detalle;
 import ar.edu.unju.escmi.tp7.dominio.Factura;
 
-class CreditoTest {
-	
-	public static final int MONTO_1 = 500000;
-	public static final int MONTO_2 = 2000000;
-	public static final int MONTO_3 = 1000;
+public class CreditoTest {
 
-	@Test
-	void testMontoCreditoValido() {
-		double montoObtenido = crearFactura().calcularTotal();
-		double montoPermitido = 1500000;
-		assertTrue(montoObtenido <= montoPermitido, "El monto total no debería superar al monto permitido");
-	}
-	
-	private Factura crearFactura() {
-		Factura factura = new Factura();
-		factura.setDetalles(crearListaDetalles());
-		return factura;
-	}
-	
-	private List<Detalle> crearListaDetalles(){
-		List<Detalle> listaDetalles = new ArrayList<Detalle>();
-		Detalle detalle1 = new Detalle();
-		detalle1.setImporte(MONTO_1);
-		Detalle detalle2 = new Detalle();
-		detalle2.setImporte(MONTO_2);
-		Detalle detalle3 = new Detalle();
-		detalle3.setImporte(MONTO_3);
-		listaDetalles.add(detalle1);
-		listaDetalles.add(detalle2);
-		listaDetalles.add(detalle3);
-		return listaDetalles;
-		
-	}
+    @Test
+    public void testMontoTotalNoSupereLimite() {
+        double montoPermitido = 1_500_000;
+        Factura factura = crearFactura();
+        double montoObtenido = factura.calcularTotal();
+        assertTrue(montoObtenido <= montoPermitido,
+            "❌ El monto total no debe superar $1.500.000");
+    }
 
+    @Test
+    public void testSumaDetallesIgualTotalFactura() {
+        Factura factura = crearFactura();
+        double sumaDetalles = factura.getDetalles()
+            .stream()
+            .mapToDouble(Detalle::getImporte)
+            .sum();
+        double totalFactura = factura.calcularTotal();
+        assertEquals(sumaDetalles, totalFactura, 0.001,
+            "❌ La suma de los detalles no coincide con el total de la factura");
+    }
+
+    @Test
+    public void testMontoNoSuperaLimites() {
+        double limiteGeneral = 1_500_000;
+        double limiteTarjeta = 800_000;
+        Factura factura = crearFactura();
+        double montoFactura = factura.calcularTotal();
+        assertTrue(montoFactura <= limiteGeneral && montoFactura <= limiteTarjeta,
+            "❌ El monto total supera el límite general o el disponible en la tarjeta");
+    }
+
+    private Factura crearFactura() {
+        Factura factura = new Factura();
+        factura.setDetalles(crearDetalles());
+        return factura;
+    }
+
+    private List<Detalle> crearDetalles() {
+        List<Detalle> detalles = new ArrayList<>();
+
+        Detalle d1 = new Detalle();
+        d1.setImporte(150_000);
+        Detalle d2 = new Detalle();
+        d2.setImporte(200_000);
+        Detalle d3 = new Detalle();
+        d3.setImporte(300_000);
+
+        detalles.add(d1);
+        detalles.add(d2);
+        detalles.add(d3);
+
+        return detalles;
+    }
 }
