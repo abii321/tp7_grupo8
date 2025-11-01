@@ -12,22 +12,24 @@
 	  <encoding>UTF-8</encoding>
   </properties>
   
-  <dependencies>
-	<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
-	  <dependency>
-	      <groupId>org.junit.jupiter</groupId>
-	      <artifactId>junit-jupiter-api</artifactId>
-	      <version>5.10.2</version>
-	      <scope>test</scope>
-	  </dependency>
-    
+<dependencies>
+    <!-- JUnit Jupiter API -->
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-api</artifactId>
+        <version>5.11.0</version>
+        <scope>test</scope>
+    </dependency>
+
+    <!-- JUnit Jupiter Engine -->
     <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter-engine</artifactId>
         <version>5.11.0</version>
         <scope>test</scope>
     </dependency>
-  </dependencies>
+</dependencies>
+
 
   <build>
     <plugins>
