@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import ar.edu.unju.escmi.tp7.dominio.Cliente;
 import ar.edu.unju.escmi.tp7.dominio.TarjetaCredito;
 
 public class CollectionTarjetaCredito {
@@ -44,5 +45,13 @@ public class CollectionTarjetaCredito {
 		}
 		return tarjetaEncontrada;
 	}
-
+	public static TarjetaCredito buscarTarjetaCreditoPorCliente(Cliente cliente) {
+    for (TarjetaCredito tarjeta : tarjetas) {
+        // Verifica que la tarjeta tenga cliente antes de comparar
+        if (tarjeta.getCliente() != null && tarjeta.getCliente().getDni() == cliente.getDni()) {
+            return tarjeta;
+        }
+    }
+    return null;
+}
 }
