@@ -19,8 +19,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		
+		CollectionCliente.precargarClientes();
 		CollectionTarjetaCredito.precargarTarjetas();
-        CollectionCliente.precargarClientes();
         CollectionProducto.precargarProductos();
         CollectionStock.precargarStocks();
         int opcion = 0;
