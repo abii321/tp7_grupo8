@@ -15,7 +15,7 @@ import ar.edu.unju.escmi.tp7.exceptions.*;
 
 
 public class Main {
-	static Scanner sc = new Scanner(System.in);
+	public static Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) {
 		
@@ -35,6 +35,7 @@ public class Main {
             opcion = InputUtil.inputInt("Ingrese su opcion: ");
 
             switch (opcion) {
+                // revisar y modificar caso 1
 				case 1: {
                     try {
                         long dni = InputUtil.inputLong("Ingrese el DNI del cliente: ");
@@ -117,6 +118,18 @@ public class Main {
                     break;
                 }
 
+                case 5 : {
+                    long dni = InputUtil.inputLong("Ingrese el dni del cliente: ");
+                    try{
+                        Cliente cliente = CollectionCliente.buscarCliente(dni);
+                        if( cliente == null ) throw new UsuarioNoRegistradoException("El usuario no existe.");
+                        
+                    } catch (UsuarioNoRegistradoException e ) {
+                        System.out.println(e.getMessage());
+                    }
+                    break;
+                }
+                
                 case 6: System.out.println("Saliendo del programa..."); break;    
                 default: System.out.println("La opcion seleccionada no existe");break;
             }
