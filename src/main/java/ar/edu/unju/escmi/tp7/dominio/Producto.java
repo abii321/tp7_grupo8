@@ -69,7 +69,6 @@ public double getPrecio() {
         this.stock = stock;
     }
 
-    // Método para reducir el stock al vender cierta cantidad
     public void reducirStock(int cantidad) {
         if (cantidad > 0 && cantidad <= stock) {
             stock -= cantidad;
