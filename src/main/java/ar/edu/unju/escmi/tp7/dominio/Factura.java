@@ -63,7 +63,11 @@ public class Factura {
         }
         return total;
     }
-
+public void agregarDetalle(Detalle detalle) {
+        if (detalle != null) {
+            this.detalles.add(detalle);
+        }
+    }
     @Override
     public String toString() {
         return  "\n\n******************** Factura ********************"
