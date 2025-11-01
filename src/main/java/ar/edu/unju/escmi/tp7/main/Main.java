@@ -62,7 +62,7 @@ public class Main {
                             if (stock == null || stock.getCantidad() < cantidad)
                                 throw new StockInsuficienteException("No hay suficiente stock disponible para este producto.");
 
-                            double subtotal = producto.getPrecioUnitario() * cantidad;
+                            double subtotal = producto.getPrecio() * cantidad;
                             totalCompra += subtotal;
 
                             // Verificar límites del programa “Ahora 30”
@@ -72,7 +72,7 @@ public class Main {
                                 throw new Exception("El monto total supera el límite permitido del programa Ahora 30.");
 
                             // Crear detalle y agregarlo a la factura
-                            Detalle detalle = new Detalle(cantidad, producto.getPrecioUnitario() * cantidad, producto);
+                            Detalle detalle = new Detalle(cantidad, producto.getPrecio() * cantidad, producto);
                             factura.agregarDetalle(detalle);
 
                             // Reducir stock

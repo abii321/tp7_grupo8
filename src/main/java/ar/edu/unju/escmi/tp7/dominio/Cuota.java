@@ -30,14 +30,8 @@ public class Cuota {
 	public void setNroCuota(int nroCuota) {
 	    this.nroCuota = nroCuota;
 	}
-	public LocalDate getFechaGeneracion() {
-	    return fechaGeneracion;
-	}
 	public void setFechaGeneracion(LocalDate fechaGeneracion) {
 	    this.fechaGeneracion = fechaGeneracion;
-	}
-	public LocalDate getFechaVencimiento() {
-	    return fechaVencimiento;
 	}
 	public void setFechaVencimiento(LocalDate fechaVencimiento) {
 	    this.fechaVencimiento = fechaVencimiento;
