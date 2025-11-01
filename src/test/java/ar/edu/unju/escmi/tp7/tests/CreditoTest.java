@@ -41,7 +41,7 @@ class CreditoTest {
         factura.setDetalles(crearDetalles());
         return factura;
     }
-
+//------
     private List<Detalle> crearDetalles() {
         List<Detalle> detalles = new ArrayList<>();
         Detalle d1 = new Detalle();
