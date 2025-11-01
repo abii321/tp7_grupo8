@@ -40,3 +40,4 @@ public class StockTest {
             "❌ No debería modificar el stock si la cantidad es inválida");
     }
 }
+//-----------------------------
