@@ -36,7 +36,4 @@ public class Producto {
         return "Codigo: " + codigo + " Descripcion: " + descripcion + " Precio Unitario: " + precioUnitario
                 + " Origen fabricacion: " + origenFabricacion;
     }
-    public String getOrigenFabricacion() {
-        return origenFabricacion;
-    }
 }
