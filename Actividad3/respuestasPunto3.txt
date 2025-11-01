@@ -1,0 +1,49 @@
+3. Análisis del Diagrama UML
+a) ¿Por qué no se dibuja la relación de agregación entre la clase CollectionProducto y Producto?
+La relación de agregación entre la clase CollectionProducto y Producto no se dibuja porque ya está implícita en el hecho de que CollectionProducto posee un atributo del tipo List<Producto>. 
+Es decir, la asociación se deduce directamente de ese atributo.Solo sería necesario representar la relación de agregación en el diagrama si CollectionProducto no tuviera explícitamente esa
+lista de productos como atributo y aun así existiera una relación conceptual entre ambas clases.
+b) ¿Cuántos atributos tiene la clase Factura y cuáles son sus nombres?
+La clase Factura posee cuatro atributos, todos con visibilidad privada (-), de acuerdo con la notación UML:
+ fecha: LocalDate
+nroFactura: long
+clientes: Cliente
+detalles: list
+c) ¿Cómo se llama la relación que se establece entre Factura y Detalle?
+La relación entre las clases Factura y Detalle es Composición y en el diagrama se denomina “contiene”.
+ Cada factura contiene uno o más detalles (1 → 1..*), mientras que cada detalle pertenece a una única factura.
+ Se trata de una relación de composición, los objetos de tipo Detalle no existen independientemente de la factura a la que pertenecen.
+d) ¿Cómo se llama la relación entre las clases Factura y Cliente?
+La relación entre ambas clases se denomina “perteneceA” (o “realiza”, según la dirección del vínculo). Cada cliente realiza una o más facturas (1 → 0..*), y cada factura pertenece a un solo
+ cliente (1).
+e) ¿Por qué los atributos de las clases Collection son públicos?
+Los atributos de las clases Collection se definen como públicos (+) debido a la función que cumplen dentro del sistema. Operan como módulos de acceso o administración que permiten gestionar
+ grupos de objetos de un mismo tipo (clientes, productos, facturas, etc.).
+ Por ello, sus métodos deben ser visibles desde cualquier otra clase, garantizando el acceso a las operaciones de búsqueda, carga y registro.
+f) Describa las características de todos los métodos de la clase CollectionCliente.
+La clase CollectionCliente cumple la función de administrar todos los objetos Cliente del sistema.
+ Los métodos que la componen son públicos (+) y tienen las siguientes características:
+
+
+Método: agregarCliente(in cliente: Cliente)
+Tipo: Estático
+Visibilidad: Público (+)
+Parámetros: cliente: Cliente
+Tipo de retorno: void
+Descripción: Agrega un nuevo cliente a la colección.
+
+
+Método: buscarCliente(in dni: long)
+Tipo: Estático
+Visibilidad: Público (+)
+Parámetros: dni: long
+Tipo de retorno: Cliente
+Descripción: Busca y devuelve un cliente según su número de documento.
+
+
+Método: precargarClientes()
+Tipo: Estático
+Visibilidad: Público (+)
+Parámetros: -
+Tipo de retorno: void
+Descripción: Precarga una lista de clientes predefinidos o de prueba al iniciar el sistema.
