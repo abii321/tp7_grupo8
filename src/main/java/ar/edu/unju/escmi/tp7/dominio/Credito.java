@@ -11,6 +11,13 @@ public class Credito {
 
 	public Credito() {
 	}
+	public Credito(TarjetaCredito tarjetaCredito, Factura factura) {
+    this.tarjetaCredito = tarjetaCredito;
+    this.factura = factura;
+    this.cuotas = new ArrayList<>();
+    generarCuotas();
+}
+
 	public Credito(TarjetaCredito tarjetaCredito, Factura factura, List<Cuota> cuotas) {
 		this.tarjetaCredito = tarjetaCredito;
 		this.factura = factura;
