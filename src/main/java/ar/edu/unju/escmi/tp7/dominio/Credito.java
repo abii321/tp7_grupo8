@@ -8,6 +8,9 @@ public class Credito {
 	private TarjetaCredito tarjetaCredito;
 	private Factura factura;
 	private List<Cuota> cuotas = new ArrayList<Cuota>();
+    private Cliente cliente;
+    private Producto producto;
+    
 
 	public Credito() {
 	}
@@ -34,6 +37,16 @@ public class Credito {
 	public List<Cuota> getCuotas() {
 		return cuotas;
 	}
+
+    public void setFactura(Factura factura) {
+    this.factura = factura;
+    }
+
+    public void setTarjetaCredito(TarjetaCredito tarjetaCredito) {
+    this.tarjetaCredito = tarjetaCredito;
+    }
+
+
 	
 	public void generarCuotas() {
     cuotas.clear(); // limpia antes de generar
@@ -77,4 +90,12 @@ public class Credito {
 			System.out.println(cuota);
 		}
 	}
+
+     public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
 }
