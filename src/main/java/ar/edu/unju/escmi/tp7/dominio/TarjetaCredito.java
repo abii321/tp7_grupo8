@@ -27,10 +27,19 @@ public class TarjetaCredito {
 	public double getLimiteCompra() {
 		return limiteCompra;
 	}
+
+	public void setLimiteCompra(double limite) {
+        this.limiteCompra = limite;
+    }
+
+	public void setNumero(long numero) {
+        this.numero = numero;
+    }
 	@Override
 	public String toString() {
 		return "\nNumero: " + numero + " Fecha De Caducacion: " + fechaCaducacion + "\nNombre Titular: "
 				+ cliente.getNombre() + ", Limite De Compra Actual:" + limiteCompra;
 	}
 
+	
 }

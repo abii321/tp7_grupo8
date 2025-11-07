@@ -31,6 +31,15 @@ public class Producto {
         return precioUnitario;
     }
 
+    public void setDescripcion(String nombre) {
+        this.descripcion = nombre;
+    }
+
+    public void setPrecioUnitario(double precio) {
+        this.precioUnitario = precio;
+    }
+
+
     @Override
     public String toString() {
         return "Codigo: " + codigo + " Descripcion: " + descripcion + " Precio Unitario: " + precioUnitario

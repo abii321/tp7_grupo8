@@ -1,49 +1,69 @@
 package ar.edu.unju.escmi.tp7.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
-import java.util.ArrayList;
+
+import java.time.LocalDate;
 import java.util.List;
 
-class Cuota {}
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-class Credito {
-    private List<Cuota> cuotas;
-
-    public Credito(List<Cuota> cuotas) {
-        this.cuotas = cuotas;
-    }
-
-    public List<Cuota> getCuotas() {
-        return cuotas;
-    }
-}
+import ar.edu.unju.escmi.tp7.dominio.*;
 
 public class CuotaTest {
 
+    private Cliente cliente;
+    private TarjetaCredito tarjeta;
+    private Producto producto;
+    private Credito credito;
+    private Factura factura;
+
+
+    @BeforeEach
+public void setUp() {
+    cliente = new Cliente();
+    cliente.setDni(12345678L);
+    cliente.setNombre("Juan Pérez");
+
+    tarjeta = new TarjetaCredito();
+    tarjeta.setNumero(1234567898765432L); 
+    tarjeta.setLimiteCompra(200000);
+    cliente.setTarjetaCredito(tarjeta);
+
+    producto = new Producto();
+    producto.setDescripcion("TV 50 pulgadas");
+    producto.setPrecioUnitario(500000);
+
+
+    credito = new Credito();
+    credito.setCliente(cliente);
+    credito.setProducto(producto);
+    credito.setTarjetaCredito(tarjeta); 
+
+    factura = new Factura();
+    factura.setCredito(credito);
+    credito.setFactura(factura);
+
+    credito.generarCuotas();
+}
+
+
     @Test
     public void testListaCuotasNoEsNull() {
-        Credito credito = new Credito(new ArrayList<>());
-        assertNotNull(credito.getCuotas(), "❌ La lista de cuotas no debería ser null");
+        List<Cuota> cuotas = credito.getCuotas();
+        assertNotNull(cuotas, "La lista de cuotas no debe ser null.");
     }
 
     @Test
-    public void testListaCuotasTiene30Elementos() {
-        List<Cuota> cuotas = new ArrayList<>();
-        for (int i = 0; i < 30; i++) {
-            cuotas.add(new Cuota());
-        }
-        Credito credito = new Credito(cuotas);
-        assertEquals(30, credito.getCuotas().size(), "❌ La lista de cuotas no tiene 30 elementos");
+    public void testListaCuotasTiene30Cuotas() {
+        List<Cuota> cuotas = credito.getCuotas();
+        assertEquals(30, cuotas.size(), "La lista de cuotas debe tener exactamente 30 cuotas.");
     }
 
     @Test
-    public void testCantidadCuotasNoSuperaPermitidas() {
-        List<Cuota> cuotas = new ArrayList<>();
-        for (int i = 0; i < 30; i++) { // <-- antes era 35
-            cuotas.add(new Cuota());
-        }
-        Credito credito = new Credito(cuotas);
-        assertTrue(credito.getCuotas().size() <= 30, "❌ Se generaron más cuotas de las permitidas (30)");
+    public void testCantidadCuotasNoSuperaLimite() {
+        int cantidadMaxima = 30;
+        int cantidadActual = credito.getCuotas().size();
+        assertTrue(cantidadActual <= cantidadMaxima, "La cantidad de cuotas no debe superar el límite de 30.");
     }
 }
