@@ -25,7 +25,7 @@ public class StockTest {
         Producto producto = CollectionProducto.productos.get(0);
         Stock stock = CollectionStock.buscarStock(producto);
 
-        assertNotNull(stock, "❌ No se encontró stock para el producto");
+        assertNotNull(stock, "No se encontró stock para el producto");
 
         int cantidadInicial = stock.getCantidad();
         int cantidadAReducir = 5;
@@ -35,7 +35,7 @@ public class StockTest {
 
         // Verificamos que haya disminuido correctamente
         assertEquals(cantidadInicial - cantidadAReducir, stock.getCantidad(),
-                "❌ El stock no se redujo correctamente");
+                "El stock no se redujo correctamente");
     }
 
     @Test
@@ -43,7 +43,7 @@ public class StockTest {
         Producto producto = CollectionProducto.productos.get(1);
         Stock stock = CollectionStock.buscarStock(producto);
 
-        assertNotNull(stock, "❌ No se encontró stock para el producto");
+        assertNotNull(stock, "No se encontró stock para el producto");
 
         int cantidadInicial = stock.getCantidad();
         int cantidadAReducir = cantidadInicial + 10; // Intento de reducir más del disponible
@@ -51,9 +51,9 @@ public class StockTest {
         CollectionStock.reducirStock(stock, cantidadAReducir);
 
         // El stock no debe quedar negativo ni cambiar
-        assertTrue(stock.getCantidad() >= 0, "❌ El stock quedó negativo");
+        assertTrue(stock.getCantidad() >= 0, "El stock quedó negativo");
         assertEquals(cantidadInicial, stock.getCantidad(),
-                "❌ El stock debería mantenerse igual si la cantidad es inválida");
+                "El stock debería mantenerse igual si la cantidad es inválida");
     }
 
     @Test
@@ -61,6 +61,6 @@ public class StockTest {
         Producto productoFalso = new Producto(9999, "Inexistente", 1000.0, "Desconocido");
         Stock resultado = CollectionStock.buscarStock(productoFalso);
 
-        assertNull(resultado, "❌ Se devolvió un stock para un producto inexistente");
+        assertNull(resultado, "Se devolvió un stock para un producto inexistente");
     }
 }
