@@ -14,8 +14,8 @@ La relación entre las clases Factura y Detalle es Composición y en el diagrama
  Cada factura contiene uno o más detalles (1 → 1..*), mientras que cada detalle pertenece a una única factura.
  Se trata de una relación de composición, los objetos de tipo Detalle no existen independientemente de la factura a la que pertenecen.
 d) ¿Cómo se llama la relación entre las clases Factura y Cliente?
-La relación entre las clases Factura y Cliente es Asociación.En el diagrama, sin embargpo, esta relación entre ambas clases se denomina “perteneceA” (o “realiza”, según la dirección del vínculo). Cada cliente realiza una o más facturas (1 → 0..*), y cada factura pertenece a un solo
- cliente (1).
+La relación entre las clases Factura y Cliente se llama Asociacion. 
+Cada factura es de un solo cliente (1 → 1..*), mientras que cada cliente puede tener una o mas facturas. 
 e) ¿Por qué los atributos de las clases Collection son públicos?
 Los atributos de las clases Collection se definen como públicos (+) debido a la función que cumplen dentro del sistema. Operan como módulos de acceso o administración que permiten gestionar
  grupos de objetos de un mismo tipo (clientes, productos, facturas, etc.).
