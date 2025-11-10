@@ -37,7 +37,7 @@ public class Cuota {
 	    this.fechaVencimiento = fechaVencimiento;
 	}
 
-	 @Override
+	@Override
 	public String toString() {
 		return "Monto: " + monto + ", N° De Cuota:" + nroCuota + ", Fecha De Generacion: " + fechaGeneracion
 				+ ", Fecha De Vencimiento: " + fechaVencimiento + "\n";

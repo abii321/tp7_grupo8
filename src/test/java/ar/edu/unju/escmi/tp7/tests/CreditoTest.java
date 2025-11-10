@@ -15,7 +15,7 @@ public class CreditoTest {
         Factura factura = crearFactura();
         double montoObtenido = factura.calcularTotal();
         assertTrue(montoObtenido <= montoPermitido,
-            "❌ El monto total no debe superar $1.500.000");
+            "El monto total no debe superar $1.500.000");
     }
 
     @Test
@@ -27,7 +27,7 @@ public class CreditoTest {
             .sum();
         double totalFactura = factura.calcularTotal();
         assertEquals(sumaDetalles, totalFactura, 0.001,
-            "❌ La suma de los detalles no coincide con el total de la factura");
+            "La suma de los detalles no coincide con el total de la factura");
     }
 
     @Test
@@ -37,7 +37,7 @@ public class CreditoTest {
         Factura factura = crearFactura();
         double montoFactura = factura.calcularTotal();
         assertTrue(montoFactura <= limiteGeneral && montoFactura <= limiteTarjeta,
-            "❌ El monto total supera el límite general o el disponible en la tarjeta");
+            "El monto total supera el límite general o el disponible en la tarjeta");
     }
 
     private Factura crearFactura() {

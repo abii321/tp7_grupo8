@@ -56,7 +56,7 @@ public class Main {
                             long codigoProducto = InputUtil.inputLong("Ingrese el código del producto: ");
                             Producto producto = CollectionProducto.buscarProducto(codigoProducto);
                             if (producto == null) throw new ProductoNoEncontradoException("No existe un producto con ese código.");
-  
+
                             int cantidad = InputUtil.inputInt("Ingrese la cantidad que desea comprar: ");
                             Stock stock = CollectionStock.buscarStock(producto);
                             if (stock == null || stock.getCantidad() < cantidad)
@@ -77,7 +77,7 @@ public class Main {
 
                             // Reducir stock
                             CollectionStock.reducirStock(stock, cantidad);
-              
+            
                             String seguir = InputUtil.inputString("¿Desea agregar otro producto? (s/n): ");
                             continuar = seguir.equalsIgnoreCase("s");
 
@@ -162,7 +162,7 @@ public class Main {
                     } catch (UsuarioNoRegistradoException | UsuarioSinTarjetaCreditoException e) {
                         System.out.println(e.getMessage());
                     } 
-                      catch (Exception e) {
+                    catch (Exception e) {
                         System.out.println("Error:"+e.getMessage());
                     }
                     break;

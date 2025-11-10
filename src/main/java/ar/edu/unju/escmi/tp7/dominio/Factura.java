@@ -11,6 +11,8 @@ public class Factura {
     private long nroFactura;
     private Cliente cliente;
     private List<Detalle> detalles = new ArrayList<Detalle>();
+    private Credito credito;
+
 
     public Factura(){
     }
@@ -41,6 +43,11 @@ public class Factura {
         }
         return total;
     }
+
+    public void setCredito(Credito credito) {
+    this.credito = credito;
+}
+
 public void agregarDetalle(Detalle detalle) {
         if (detalle != null) {
             this.detalles.add(detalle);

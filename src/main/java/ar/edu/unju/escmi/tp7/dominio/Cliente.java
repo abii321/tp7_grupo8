@@ -10,15 +10,26 @@ public class Cliente {
 	private String nombre;
 	private String direccion;
 	private String telefono;
+	private TarjetaCredito tarjetaCredito;
+
+
+	// constructor vacío (necesario para CuotaTest.java)
+    public Cliente() {}
 	
-	public Cliente(long dni, String nombre, String direccion, String telefono) {
-		super();
-		this.dni = dni;
-		this.nombre = nombre;
-		this.direccion = direccion;
-		this.telefono = telefono;
+	public Cliente(long dni, String nombre, String domicilio, String telefono) {
+    this.dni = dni;
+    this.nombre = nombre;
+    this.direccion = direccion;
+    this.telefono = telefono;
+	this.tarjetaCredito = tarjetaCredito;
 	}
 
+
+
+    public Cliente(long dni, String nombre) {
+        this.dni = dni;
+        this.nombre = nombre;
+    }
 	public long getDni() {
 		return dni;
 	}
@@ -39,4 +50,16 @@ public class Cliente {
 		}
 		return shoppingList;
 	}
+
+	public void setDni(long dni) {
+    this.dni = dni;
+}
+
+	public void setNombre(String nombre) {
+    this.nombre = nombre;
+	}
+
+	public void setTarjetaCredito(TarjetaCredito tarjetaCredito) {
+        this.tarjetaCredito = tarjetaCredito;
+    }
 }
